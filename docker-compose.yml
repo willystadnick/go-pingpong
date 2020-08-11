@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    player1:
+        container_name: player1
+        build:
+            context: .
+            dockerfile: player1.Dockerfile
+        ports:
+            - 8888:8888
+        networks:
+            - pingpongnet
+    player2:
+        container_name: player2
+        build:
+            context: .
+            dockerfile: player2.Dockerfile
+        ports:
+            - 8889:8889
+        networks:
+            - pingpongnet
+
+networks:
+    pingpongnet:
+        driver: bridge
